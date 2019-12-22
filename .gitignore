@@ -1,0 +1,9 @@
+# Ignore the VENV dirs and files.
+__pycache__/
+Include/
+Lib/
+Scripts/
+pyvenv.cfg
+
+# Ignore the mog.py file, which contains the bot access token
+mog.py
