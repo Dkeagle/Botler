@@ -7,4 +7,4 @@ pyvenv.cfg
 
 # Ignore the config.py file, which contains the bot access token
 # We don't want to update it on git.
-config.py
+# config.py
