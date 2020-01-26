@@ -58,6 +58,6 @@ if __name__ == "__main__":
 	# Load extensions
 	bot.load_extension("help")
 	bot.load_extension("dice")
-
+	
 	# Start the bot
 	bot.run(TOKEN)
