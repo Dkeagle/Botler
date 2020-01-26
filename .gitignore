@@ -5,5 +5,6 @@ Lib/
 Scripts/
 pyvenv.cfg
 
-# Ignore the mog.py file, which contains the bot access token
-mog.py
+# Ignore the config.py file, which contains the bot access token
+# We don't want to update it on git.
+config.py
