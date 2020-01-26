@@ -6,13 +6,14 @@ import discord
 from discord.ext import commands
 from log import log_time
 
-# Copying config file into constants
-from config import admin_id_list, bot_prefix, bot_token
+# Loading config file into constants
+from config import admin_id_list, bot_name, bot_prefix, bot_token
 ADMIN_ID = admin_id_list
+NAME = bot_name
 PREFIX = bot_prefix
 TOKEN = bot_token
 
-# Variables
+# Create the bot object
 bot = commands.Bot(command_prefix=PREFIX)
 
 # Disable the default help command
@@ -22,7 +23,7 @@ bot.remove_command("help")
 # When the bot is ready
 @bot.event
 async def on_ready():
-	print("{}: Mog logged in!".format(log_time()))
+	print("{}: {} logged in!".format(log_time(), NAME))
 
 # On every message, if it is a command, convert it to lowercase and print it in the log
 @bot.event
@@ -36,22 +37,22 @@ async def on_message(message):
 @bot.event
 async def on_command_error(ctx, error):
 	split = ctx.message.content.split()
-	await ctx.send("La commande \"{}\" n'existe pas, Kupo!".format(split[0]))
+	await ctx.send("La commande \"{}\" n'existe pas!".format(split[0]))
 
 # When the bot is disconnected
 @bot.event
 async def on_disconnect():
-	print("{}: Mog logging out!".format(log_time()))
+	print("{}: {} logging out!".format(log_time(), NAME))
 
 # COMMANDS
 # Turn off the bot
 @bot.command()
-async def stop(ctx):
+async def logout(ctx):
 	if int(ctx.author.id) in ADMIN_ID:
-		await ctx.send("Kupo!")
+		await ctx.send("Au revoir!")
 		await bot.logout()
 	else:
-		await ctx.send("Non, je reste!")
+		await ctx.send("Vous n'êtes pas autorisé à exécuter cette commande!")
 
 if __name__ == "__main__":
 	# Load extensions
